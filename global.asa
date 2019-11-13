@@ -1,0 +1,26 @@
+
+<script language="vbscript" runat="server">
+' Has to be in root folder
+
+    sub Application_OnStart
+    'some code
+        Application("noOfUserOnline") = 0
+    end sub
+    sub Application_OnEnd
+    'some code
+    end sub
+
+    sub Session_OnStart
+    'some code0.........
+        Application.lock
+            Application("noOfUserOnline")= Application("noOfUserOnline")+1
+        Application.unlock
+    end sub
+
+    sub Session_OnEnd
+    'some code
+        Application.lock
+            Application("noOfUserOnline")= Application("noOfUserOnline") - 1
+        Application.unlock
+    end sub
+</script>
